@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Giỏ Hàng";
+}
+
+
+@if (ViewBag.GioHang != null)
+{
+    <div class="check">
+        <div class="col-md-9 cart-items">
+            <h1>My Shopping Bag</h1>
+            <div class="cart-header">
+                @foreach (var item in ViewBag.GioHang)
+                {
+                    <a href="@Url.Action("XoaKhoiGio","GioHang", new { id = @item.MaSanPham })"><img src="~/images/close_1.png" /></a>
+                    <div class="cart-sec simpleCart_shelfItem">
+                        <div class="cart-item cyc">
+                            <img src="@item.Anhbia" class="img-responsive" alt="" />
+                        </div>
+                        <div class="cart-item-info">
+                            <h3><a href="@Url.Action("ChiTietSanPham","SanPham", new { id = item.MaSanPham })">@item.TenSanPham</a></h3>
+                            <p>Giá sản phẩm : @String.Format("{0:0,0}", @item.GiaKhuyenMai) VND <del>@String.Format("{0:0,0}", @item.Giaban) VND</del></p>
+                            Số lượng: <input type="text" class="item_quantity quantity_1" value="@item.SoLuong" />
+                            <div class="delivery">
+                                <h3>Nội dung</h3>
+                                <p>@item.Mota</p>
+                                <div class="clearfix"></div>
+                                <span>Tổng giá tiền: @String.Format("{0:0,0}", @item.GiaTong) VND</span>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-3 cart-total">
+            <a class="continue" href="#">Xem các sản phẩm khác</a>
+            <div class="price-details">
+                <h3>Thông tin về giá tiền</h3>
+                <span>Tổng số tiền</span>
+                <span class="total1">---</span>
+                <span>Chiết khấu</span>
+                <span class="total1">---</span>
+                <span>Phí vận chuyển</span>
+                <span class="total1">Miễn phí</span>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix"></div>
+            <a class="order" href="#">Place Order</a>
+            <div class="total-item">
+                <h3>OPTIONS</h3>
+                <h4>COUPONS</h4>
+                <a class="cpns" href="#">Apply Coupons</a>
+                <p><a href="@Url.Action("DangNhap","TaiKhoan")">Log In</a> to use accounts - linked coupons</p>
+            </div>
+        </div>
+    </div>
+}

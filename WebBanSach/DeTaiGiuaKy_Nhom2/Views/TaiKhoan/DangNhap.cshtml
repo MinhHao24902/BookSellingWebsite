@@ -1,0 +1,42 @@
+﻿@model DeTaiGiuaKy_Nhom2.Models.TaiKhoanModels
+@{
+    ViewBag.Title = "Đăng nhập";
+}
+
+@using (Html.BeginForm("DangNhap", "TaiKhoan", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="register">
+        <div class="col-md-6 login-right">
+            <h3>Đăng Nhập</h3>
+            <p>Nếu bạn đã đăng ký tài khoản, hãy đăng nhập.</p>
+            <form>
+                <div>
+                    <span>
+                        @Html.LabelFor(x => x.TaiKhoan)
+                        @Html.TextBoxFor(x => x.TaiKhoan, new { Type = "text", ID = "TaiKhoan", PlaceHolder = "Nhập tài khoản" })
+
+                        @Html.ValidationMessageFor(x => x.TaiKhoan)
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        @Html.LabelFor(x => x.MatKhau)
+                        @Html.TextBoxFor(x => x.MatKhau, new { Type = "text", ID = "MatKhau", PlaceHolder = "Nhập mật khẩu" })
+
+                        @Html.ValidationMessageFor(x => x.MatKhau)
+                    </span>
+                </div>
+                <a class="forgot" href="#">Forgot Your Password?</a>
+                <input type="submit" value="Đăng nhập">
+            </form>
+        </div>
+        <div class="col-md-6 login-left">
+            <h3>CHƯA CÓ TÀI KHOẢN?</h3>
+            <p>Bằng cách tạo tài khoản với cửa hàng của chúng tôi, bạn sẽ có thể thực hiện quy trình thanh toán nhanh hơn, lưu trữ nhiều địa chỉ giao hàng, xem và theo dõi các đơn đặt hàng trong tài khoản của bạn và hơn thế nữa.</p>
+            <a class="acount-btn" href="@Url.Action("DangKy", "TaiKhoan")">ĐĂNG KÝ</a>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+}
+

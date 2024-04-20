@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "TatCaSanPham";
+}
+<div class="container">
+    <div class="women_main">
+        <div class="col-md-9 w_content">
+            <div class="women">
+                <a href="#"><h4>Enthecwear - <span>4449 itemms</span> </h4></a>
+                <ul class="w_nav">
+                    <li>Sort : </li>
+                    <li><a class="active" href="#">popular</a></li> |
+                    <li><a href="#">new </a></li> |
+                    <li><a href="#">discount</a></li> |
+                    <li><a href="#">price: Low High </a></li>
+                    <div class="clear"></div>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <!-- grids_of_4 -->
+            @foreach (var item in ViewBag.SanPham)
+            {
+                <div class="grids_of_4">
+                    <div class="grid1_of_4 simpleCart_shelfItem">
+                        <div class="content_box">
+                            <a href="@Url.Action("ChiTietSanPham", "SanPham" , new { id = @item.MaSanPham })">
+                                <div class="view view-fifth">
+                                    <img src="@item.Anhbia" class="img-responsive" alt="" />
+                                    <div class="mask1">
+                                        <div class="info"> </div>
+                                    </div>
+                            </a>
+                        </div>
+                        <h5><a href="single.html"> @item.TenSanPham </a></h5>
+                        <h6>@item.TenNhaXuatBan</h6>
+                        <div class="size_1">
+                            <span class="item_price">@String.Format("{0:0,0}", item.GiaKhuyenMai) VND</span>
+                            <div class="clearfix"></div>
+                            <a href="@Url.Action("ThemVaoGio","GioHang", new { id = @item.MaSanPham })"><input type="button" class="item_add add3" value="" /></a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            }
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

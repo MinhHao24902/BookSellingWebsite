@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Đăng ký";
+}
+@model DeTaiGiuaKy_Nhom2.Models.TaiKhoanModels
+@using (Html.BeginForm("DangKy", "TaiKhoan", FormMethod.Post))
+{
+@Html.AntiForgeryToken()
+
+<div class="single_top">
+    <div class="container">
+        <div class="register">
+            <div class="col-md-6 login-right">
+                <h3>Đăng ký tài khoản</h3>
+                <form action="/TaiKhoan/DangKy" method="post">
+                    <div>
+                        <span>@Html.LabelFor(x => x.HoTen)</span>
+                        @Html.TextBoxFor(x => x.HoTen, new { Type = "text", ID = "HoTen", PlaceHolder = "Nhập họ tên" })
+
+                        @Html.ValidationMessageFor(x => x.HoTen)
+                    </div>
+                    <div>
+                        <span>@Html.LabelFor(x => x.Email)</span>
+                        @Html.TextBoxFor(x => x.Email, new { Type = "text", ID = "Email", PlaceHolder = "Nhập Email" })
+
+                        @Html.ValidationMessageFor(x => x.Email)
+                    </div>
+                    <div>
+                        <span>@Html.LabelFor(x => x.TaiKhoan)</span>
+                        @Html.TextBoxFor(x => x.TaiKhoan, new { Type = "text", ID = "TaiKhoan", PlaceHolder = "Nhập tài khoản" })
+
+                        @Html.ValidationMessageFor(x => x.TaiKhoan)
+                    </div>
+                    <div>
+                        <span>@Html.LabelFor(x => x.MatKhau)</span>
+                        @Html.TextBoxFor(x => x.MatKhau, new { Type = "text", ID = "MatKhau", PlaceHolder = "Nhập mật khẩu" })
+
+                        @Html.ValidationMessageFor(x => x.MatKhau)
+                    </div>
+                    <div>
+                        <span>@Html.LabelFor(x => x.MatKhau2)</span>
+                        @Html.TextBoxFor(x => x.MatKhau2, new { Type = "text", ID = "MatKhau2", PlaceHolder = "Nhập lại mật khẩu" })
+
+                        @Html.ValidationMessageFor(x => x.MatKhau2)
+                    </div>
+                    <input type="submit" value="Đăng ký">
+                </form>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+}

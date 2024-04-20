@@ -1,0 +1,12 @@
+﻿@if (ViewBag.TaiKhoan == null)
+{
+    <div class="cssmenu">
+        <ul>
+            <li class="active"><a href="@Url.Action("DangNhap","TaiKhoan")">My Account</a></li>
+        </ul>
+    </div>
+}
+else
+{
+    @ViewBag.TaiKhoan.TaiKhoan
+}
